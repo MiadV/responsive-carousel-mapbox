@@ -10,7 +10,7 @@ Join my youtube channel. [Youtube Channel](https://www.youtube.com/c/MiadVosough
 
 ### Running Locally
 
-1. Clone this reposiroty `git clone https://github.com/MiadV/hiredli-tw.git`
+1. Clone this reposiroty `git clone https://github.com/MiadV/responsive-carousel-mapbox.git`
 2. Navigate to project folder and install the dependencies.
 
 ```bash
