@@ -1,0 +1,335 @@
+/* --- VARIABLES --- */
+:root {
+  //  COLORS
+  --clr-brand: #ffb801;
+  --clr-grey-900: rgb(36, 36, 36);
+  --clr-body: #f4f5fa;
+
+  --box-shadow-md: rgba(0, 0, 0, 0.11) 0px 2px 16px;
+
+  //   TYPOGRAPHY
+  --font-family: 'Montserrat', 'Lato';
+  --fs-md: 1rem; /* 16px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-2xs: 0.625rem; /* 10px */
+  --fw-light: 200;
+  --fw-reg: 300;
+  --fw-md: 500;
+  --fw-bold: 700;
+}
+
+@keyframes indicate {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: var(--fw-md);
+  color: var(--clr-brand);
+  transition: color 100ms ease-in-out;
+
+  &:hover {
+    color: var(--clr-grey-900);
+  }
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-reg);
+  color: var(--clr-grey-900);
+  background-color: var(--clr-body);
+}
+
+.app-wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+  margin: 2rem;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.instruction {
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    font-size: var(--fs-sm);
+    margin-bottom: 0.5rem;
+  }
+  span {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-md);
+    background-color: rgba(200, 200, 200, 0.5);
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.journey {
+  display: flex;
+  max-width: 420px;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: var(--box-shadow-md);
+  margin: 2rem 1rem;
+
+  @media screen and (min-width: 640px) {
+    min-height: 500px;
+    max-width: 1024px;
+    flex-direction: row-reverse;
+  }
+
+  &__title {
+    position: absolute;
+    top: 1rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    border-radius: 0% 25px 25px 0%;
+    text-transform: uppercase;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    background-color: #fff;
+    box-shadow: var(--box-shadow-md);
+
+    svg {
+      width: 10px;
+      height: 14px;
+      margin-right: 0.5rem;
+    }
+
+    @media screen and (min-width: 640px) {
+      left: 0;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+
+    @media screen and (min-width: 640px) {
+      min-width: 400px;
+    }
+  }
+
+  &__map-wrapper {
+    display: flex;
+    flex-grow: 1;
+    min-height: 300px;
+
+    .map {
+      background-color: #d7d7d7;
+      width: 100%;
+    }
+  }
+}
+
+/* --- PRODUCT CARD --- */
+
+.product-card-wrapper {
+  padding: 1rem 2.5rem 1rem 2.5rem;
+  margin-top: 0.5rem;
+  height: 350px;
+  overflow-y: auto;
+}
+
+.product-card {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-md);
+
+  .card__img {
+    position: relative;
+    background-color: #d7d7d7;
+    height: 160px;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      background: linear-gradient(
+        125.26deg,
+        rgba(0, 0, 0, 0.7) 34.32%,
+        rgba(0, 0, 0, 0.07) 77.01%
+      );
+      inset: 0px;
+    }
+    .location {
+      &__container {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 1rem;
+        color: #fff;
+        z-index: 10;
+      }
+
+      &__wrapper {
+        display: flex;
+        column-gap: 0.5rem;
+
+        .title {
+          display: block;
+          font-size: var(--fs-md);
+          font-weight: var(--fw-bold);
+        }
+
+        .subtitle {
+          display: block;
+          font-size: var(--fs-2xs);
+          font-weight: var(--fw-light);
+        }
+      }
+    }
+  }
+  .card__body {
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    max-height: 70px;
+
+    &-expand {
+      max-height: 200px;
+    }
+
+    p {
+      font-size: var(--fs-sm);
+    }
+
+    .fade {
+      position: absolute;
+      bottom: 0px;
+      display: block;
+      width: 100%;
+      height: 80%;
+      background: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgb(255, 255, 255) 100%
+      );
+    }
+  }
+
+  .card__footer {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+  }
+}
+
+/* --- STEPS CAROUSEL --- */
+
+.steps {
+  position: relative;
+  margin: 4rem 2rem 2rem;
+
+  .carousel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3rem;
+    width: 100%;
+    overflow: hidden;
+
+    &__inner {
+      display: inline-flex;
+      transition: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      user-select: none;
+
+      & span {
+        display: grid;
+        place-items: center;
+        font-weight: var(--fw-bold);
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+        box-shadow: var(--box-shadow-md);
+        color: var(--clr-grey-900);
+        background-color: #fff;
+      }
+
+      &:not(&--active) {
+        cursor: pointer;
+      }
+
+      &--active {
+        &::before {
+          content: attr(data-title);
+          position: absolute;
+          z-index: 1;
+          left: 2.5rem;
+          color: var(--clr-grey-900);
+          font-weight: var(--fw-bold);
+          max-width: calc(100% - 64px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 1rem;
+          background-color: #fff;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 2.5rem;
+          width: calc(100% - 64px);
+          border: 1px dashed rgb(213, 213, 213);
+        }
+
+        & span {
+          color: #fff;
+          background-color: var(--clr-grey-900);
+        }
+      }
+
+      &--next {
+        animation: indicate 1.6s ease-in-out 0s infinite normal none running;
+      }
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(-180deg);
+  transition: all 0.5s ease;
+}
